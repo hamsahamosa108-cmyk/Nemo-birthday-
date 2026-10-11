@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🧡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #fff5f2;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.15);
+            border: 3px solid #ffe5dc;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .cats-header {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #ff6b35;
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        .btn {
+            background: linear-gradient(135deg, #ff8c00, #ff5e00);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            transition: 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none !important;
+        }
+        /* Game Section */
+        .game-section, .letter-section {
+            text-align: left;
+        }
+        .photo-box {
+            background: #fff9f5;
+            border: 2px dashed #ffb38a;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .photo-box label {
+            display: block;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .photo-box input[type="file"] {
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        .photo-box textarea {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #ffd1b3;
+            border-radius: 8px;
+            padding: 8px;
+            resize: none;
+            font-size: 14px;
+        }
+        .wish-box {
+            margin-top: 20px;
+        }
+        .wish-box label {
+            display: block;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .wish-box textarea {
+            width: 100%;
+            height: 70px;
+            border: 1px solid #ffd1b3;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 14px;
+        }
+        /* Secret Password Box */
+        .secret-box {
+            margin-top: 20px;
+            background: #fff0eb;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .secret-box input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ffb38a;
+            border-radius: 8px;
+            margin-top: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .error-msg {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        /* Final Letter */
+        .final-letter {
+            background: #fff9f5;
+            border: 2px solid #ffb38a;
+            border-radius: 15px;
+            padding: 22px;
+            text-align: right;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.9;
+            color: #2c3e50;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- STEP 1: WELCOME CARD -->
+        <div id="step1" class="card">
+            <div class="cats-header">🐱🧡🎉 🐈🎩 🐱🧡</div>
+            <h1>Happy Birthday my fucking best person in my whole life ♥️🙏</h1>
+            <button class="btn" onclick="goToGame()">Next ➡️</button>
+        </div>
+
+        <!-- STEP 2: GAME & QUESTIONS -->
+        <div id="step2" class="card game-section hidden">
+            <h2 style="color: #ff6b35; text-align: center; margin-bottom: 15px; font-size: 20px;">Start Game 🤓😈</h2>
+            <p style="font-size: 13px; color: #666; text-align: center; margin-bottom: 15px;">Upload our top 4 favorite pictures and write what happened on each day!</p>
+            
+            <!-- Photo 1 -->
+            <div class="photo-box">
+                <label>Photo 1 📸</label>
+                <input type="file" id="img1" accept="image/*">
+                <textarea id="desc1" placeholder="What happened on this day?"></textarea>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-box">
+                <label>Photo 2 📸</label>
+                <input type="file" id="img2" accept="image/*">
+                <textarea id="desc2" placeholder="What happened on this day?"></textarea>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="photo-box">
+                <label>Photo 3 📸</label>
+                <input type="file" id="img3" accept="image/*">
+                <textarea id="desc3" placeholder="What happened on this day?"></textarea>
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="photo-box">
+                <label>Photo 4 📸</label>
+                <input type="file" id="img4" accept="image/*">
+                <textarea id="desc4" placeholder="What happened on this day?"></textarea>
+            </div>
+
+            <!-- Wish Box -->
+            <div class="wish-box">
+                <label>Write something you wish I would do for you ✨</label>
+                <textarea id="userWish" placeholder="Type your wish here..."></textarea>
+            </div>
+
+            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="submitGame()">Submit & Unlock Letter 🔓</button>
+        </div>
+
+        <!-- STEP 3: SECRET PASSWORD & FINAL LETTER -->
+        <div id="step3" class="card letter-section hidden">
+            <h2 style="color: #ff6b35; text-align: center; margin-bottom: 15px; font-size: 18px;">Almost There! 🤫</h2>
+            
+            <div class="secret-box">
+                <label style="font-size: 13px; color: #d35400; font-weight: 600;">Enter the secret word you always used to say that used to annoy me when you told others! 😼</label>
+                <input type="text" id="secretInput" placeholder="Type the secret word...">
+                <div id="errorMsg" class="error-msg">Wrong word! Try again 🤓</div>
+                <button class="btn" style="margin-top: 10px; padding: 8px 20px; font-size: 14px;" onclick="checkSecret()">Open Letter 💌</button>
+            </div>
+
+            <div id="letterContainer" class="hidden" style="margin-top: 20px;">
+                <div class="cats-header" style="text-align: center;">🐱🧡💌🧡🐱</div>
+                <div class="final-letter">
+                    <p>
+                    بما انك وصلتي ل هنا فا حابه اجولك اني مبسوطه ان لسه في جوانا حته متكسرتش لسه في جزء مخليني اقعد القعده دي مخصوص عشانك مش عوزاكي تشيلي مني من اي موقف عملته دايقك اي مره حسستك ب شعور مقرف اي مره قفلت دماغي فيها زي العيال الصغيره عوزاكي تبقي كويسه و بجد بتمني ان السنه دي تعوضك عن قرف السنه الفاتت دي كلها وانا جمبك و معاكي و واثقه انك هتعدي ده انا عارفه انك كتير هتترددي تيجي كتير هتبقي مش واثقه فيا انك تجيلي اساسا وانا اسفه عشان وصلتك ل هنا مش عايزه اعرف انا عملت ايه ولا عايزه احاول اصلح حاجه باظت و صعب تتصلح بس عوزاكي تحاولي تسامحيني علي اي تعب سببتهولك اي اذي شوفتيه مني اي تصرف خلاكي متثقيش فيا اعرفي بس ان انا بجد بحبك و ان كل الدوشه ال بعملها حوالينا دي عشان بس خايفه نسكت اخسرك (هتعالج والله )
+                    </p>
+                </div>
+
+                <!-- Reply Box -->
+                <div style="margin-top: 20px; background: #fff9f5; border: 2px dashed #ffb38a; border-radius: 12px; padding: 15px; text-align: left;">
+                    <label style="display: block; font-weight: 600; color: #d35400; margin-bottom: 5px; font-size: 13px;">Want to say something back? Leave your reply here... 💭✍️</label>
+                    <textarea id="userReply" placeholder="Write your reply here..." style="width: 100%; height: 70px; border: 1px solid #ffd1b3; border-radius: 8px; padding: 8px; font-size: 14px; margin-bottom: 10px; resize: none;"></textarea>
+                    <button class="btn" style="width: 100%; padding: 10px; font-size: 14px;" onclick="sendAllToWhatsApp()">Send Reply & Answers to Hamsa 🚀🧡</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const myWhatsAppNumber = "201287339330"; 
+        const secretWord = "الصغنن";
+
+        let storedDesc1 = "";
+        let storedDesc2 = "";
+        let storedDesc3 = "";
+        let storedDesc4 = "";
+        let storedWish = "";
+
+        function goToGame() {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+
+        function submitGame() {
+            storedDesc1 = document.getElementById('desc1').value;
+            storedDesc2 = document.getElementById('desc2').value;
+            storedDesc3 = document.getElementById('desc3').value;
+            storedDesc4 = document.getElementById('desc4').value;
+            storedWish = document.getElementById('userWish').value;
+
+            if(!storedWish) {
+                alert("Please write your wish before submitting! 🤓");
+                return;
+            }
+
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+        }
+
+        function checkSecret() {
+            const userInput = document.getElementById('secretInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if(userInput.toLowerCase() === secretWord.toLowerCase()) {
+                errorMsg.style.display = 'none';
+                document.querySelector('.secret-box').classList.add('hidden');
+                document.getElementById('letterContainer').classList.remove('hidden');
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function sendAllToWhatsApp() {
+            const reply = document.getElementById('userReply').value;
+
+            const message = `🎉 Birthday Answers & Reply! 🧡%0A%0A` +
+                            `- Photo 1 Story: ${storedDesc1 || 'None'}%0A` +
+                            `- Photo 2 Story: ${storedDesc2 || 'None'}%0A` +
+                            `- Photo 3 Story: ${storedDesc3 || 'None'}%0A` +
+                            `- Photo 4 Story: ${storedDesc4 || 'None'}%0A%0A` +
+                            `- Her Wish: ${storedWish || 'None'}%0A%0A` +
+                            `💌 Her Reply to your message:%0A${reply || 'No reply written'}`;
+            
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
